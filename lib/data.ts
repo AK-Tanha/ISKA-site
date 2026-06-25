@@ -34,31 +34,37 @@ export const STATS = [
 export const EXECUTIVE_BOARD = [
   {
     name: 'Mehedi Hassan Polok',
+    slug: 'mehedi-hassan-polok',
     role: 'National Director',
     bio: 'Founder and National Director of ISKA Bangladesh, officially appointed by the President of ISKA to lead and represent the organization in Bangladesh.',
   },
   {
     name: 'Ishtiak Ahmed Chowdhury',
+    slug: 'ishtiak-ahmed-chowdhury',
     role: 'Officiating Director',
     bio: 'Oversees officiating standards, referee and judge certification across all ISKA sanctioned events in Bangladesh.',
   },
   {
     name: 'Atiqur Rahman Sazib',
+    slug: 'atiqur-rahman-sazib',
     role: 'Ranking & National Team Development Director',
     bio: 'Focuses on maintaining national rankings and developing elite athletes for international competition pathways.',
   },
   {
     name: 'Zawad Syam',
+    slug: 'zawad-syam',
     role: 'Athlete Management Director',
     bio: 'Responsible for athlete welfare, career guidance, and managing professional relationships within the combat sports community.',
   },
   {
     name: 'Alik Bhowmick',
+    slug: 'alik-bhowmick',
     role: 'Strategic Partnerships Director',
     bio: 'Develops relationships with national and international partners, sponsors, and governing bodies.',
   },
   {
     name: 'Tanver Ahamead Emon',
+    slug: 'tanver-ahamead-emon',
     role: 'Creative Marketing Director',
     bio: 'Leads the visual identity, digital presence, and marketing strategies for ISKA Bangladesh.',
   },

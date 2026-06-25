@@ -24,6 +24,7 @@ export default function Board() {
                 name={member.name}
                 role={member.role}
                 bio={member.bio}
+                slug={member.slug}
               />
             ))}
           </div>

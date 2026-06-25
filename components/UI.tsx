@@ -19,12 +19,12 @@ export function Hero() {
         <div className="absolute inset-0 bg-linear-to-r from-iska-blue/20 to-transparent" />
       </div>
 
-      <div className="container-custom relative z-10 grid lg:grid-cols-2 gap-12 items-center pt-20">
+      <div className="container-custom relative z-10 grid lg:grid-cols-2 gap-12 items-center pt-10 pb-20">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-8"
+          className="space-y-6"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-iska-red/10 border border-iska-red/20 rounded-full text-iska-red text-xs font-bold uppercase tracking-widest">
             <span className="relative flex h-2 w-2">
@@ -38,11 +38,11 @@ export function Hero() {
             Building the Future of <span className="text-iska-blue-light">Combat Sports</span> in Bangladesh
           </h1>
           
-          <p className="text-xl text-gray-300 max-w-lg leading-relaxed">
+          <p className="text-lg text-gray-300 max-w-lg leading-relaxed">
             Developing, Regulating and Promoting Combat Sports Excellence Across Bangladesh. Join the global ISKA network.
           </p>
 
-          <div className="flex flex-wrap gap-4 pt-4">
+          <div className="flex flex-wrap gap-4 pt-2">
             <a href="/about" className="btn-primary flex items-center gap-2 text-lg">
               Learn More <ArrowRight size={20} />
             </a>

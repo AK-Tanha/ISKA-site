@@ -4,6 +4,8 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { User, Trophy, Shield, GraduationCap, Scale, TrendingUp, Globe, Home, UserPlus, ClipboardCheck, UserCheck } from 'lucide-react';
 
+import Link from 'next/link';
+
 const ICON_MAP: Record<string, any> = {
   UserPlus, 
   GraduationCap, 
@@ -17,14 +19,9 @@ const ICON_MAP: Record<string, any> = {
   UserCheck
 };
 
-export function ProfileCard({ name, role, bio }: { name: string, role: string, bio: string }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="group relative bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500"
-    >
+export function ProfileCard({ name, role, bio, slug }: { name: string, role: string, bio: string, slug?: string }) {
+  const content = (
+    <>
       <div className="aspect-[4/5] bg-gray-50 relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center text-gray-200">
           <User size={140} strokeWidth={0.5} />
@@ -56,6 +53,32 @@ export function ProfileCard({ name, role, bio }: { name: string, role: string, b
           {bio}
         </p>
       </div>
+    </>
+  );
+
+  if (slug) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="group relative bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500"
+      >
+        <Link href={`/board/${slug}`}>
+          {content}
+        </Link>
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="group relative bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500"
+    >
+      {content}
     </motion.div>
   );
 }
