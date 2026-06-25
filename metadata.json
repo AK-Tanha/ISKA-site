@@ -1,0 +1,6 @@
+{
+  "name": "ISKA Bangladesh",
+  "description": "Official National Representative of the International Sport Kickboxing Association in Bangladesh. Developing, Regulating and Promoting Combat Sports Excellence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
