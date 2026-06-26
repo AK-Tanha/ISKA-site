@@ -22,6 +22,7 @@ export default function Board() {
               <ProfileCard 
                 key={idx}
                 name={member.name}
+                image={member.image}
                 role={member.role}
                 bio={member.bio}
                 slug={member.slug}

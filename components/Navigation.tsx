@@ -51,12 +51,12 @@ export function Header() {
         <nav className="container-custom flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden shadow-md group-hover:scale-105 transition-transform">
-               <img 
-                 src="/assets/logo.jpg" 
-                 alt="ISKA Bangladesh Logo" 
-                 className="w-full h-full object-cover"
-                 referrerPolicy="no-referrer"
-               />
+                 <img 
+                  src="/ISKA%20BANGLADESH%20LOGO.png" 
+                  alt="ISKA Bangladesh Logo" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
             </div>
             <div className="flex flex-col">
               <span className="font-display font-bold text-xl tracking-tighter text-iska-blue leading-none">ISKA</span>
@@ -225,9 +225,9 @@ export function Footer() {
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden bg-white">
-                <img 
-                  src="/assets/logo.jpg" 
-                  alt="ISKA Logo" 
+                 <img 
+                  src="/ISKA%20BANGLADESH%20LOGO.png" 
+                  alt="ISKA Bangladesh Logo" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />

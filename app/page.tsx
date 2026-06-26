@@ -63,7 +63,7 @@ export default function Home() {
               <div className="relative">
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden border-4 border-white/10 shadow-2xl">
                   <img 
-                    src="https://picsum.photos/seed/director/600/800" 
+                    src="/Joint Secretary Mehedi Hassan Polok.png" 
                     alt="Mehedi Hassan Polok" 
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                     referrerPolicy="no-referrer"
@@ -148,6 +148,7 @@ export default function Home() {
               <ProfileCard 
                 key={idx}
                 name={member.name}
+                image={member.image}
                 role={member.role}
                 bio={member.bio}
               />

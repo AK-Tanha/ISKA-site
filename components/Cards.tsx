@@ -19,7 +19,7 @@ const ICON_MAP: Record<string, any> = {
   UserCheck
 };
 
-export function ProfileCard({ name, role, bio, slug }: { name: string, role: string, bio: string, slug?: string }) {
+export function ProfileCard({ name, image, role, bio, slug }: { name: string, image?: string, role: string, bio: string, slug?: string }) {
   const content = (
     <>
       <div className="aspect-[4/5] bg-gray-50 relative overflow-hidden">
@@ -27,13 +27,15 @@ export function ProfileCard({ name, role, bio, slug }: { name: string, role: str
           <User size={140} strokeWidth={0.5} />
         </div>
         
-        {/* Mock Image */}
-        <img 
-          src={`https://picsum.photos/seed/${name.replace(/\s+/g, '-').toLowerCase()}/800/1000?grayscale`}
-          alt={name}
-          className="absolute inset-0 w-full h-full object-cover relative z-10 group-hover:scale-110 transition-transform duration-700"
-          referrerPolicy="no-referrer"
-        />
+        {/* Image */}
+        {image && (
+          <img 
+            src={image.startsWith('http') ? image : `/${image}`}
+            alt={name}
+            className="absolute inset-0 w-full h-full object-cover relative z-10 group-hover:scale-110 transition-transform duration-700"
+            referrerPolicy="no-referrer"
+          />
+        )}
 
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-iska-blue/5 rounded-full -translate-y-1/2 translate-x-1/2" />

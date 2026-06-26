@@ -62,7 +62,7 @@ export function Hero() {
             <div className="flex items-center gap-6 mb-12">
               <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg overflow-hidden">
                 <img 
-                  src="/assets/logo.jpg" 
+                  src="ISKA BANGLADESH LOGO.png" 
                   alt="ISKA Logo" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
