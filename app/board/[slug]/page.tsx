@@ -63,12 +63,14 @@ export default function MemberProfile() {
                   <div className="absolute inset-0 flex items-center justify-center text-white/5">
                     <User size={300} strokeWidth={0.5} />
                   </div>
-                  <img 
-                    src={`https://picsum.photos/seed/${member.slug}/800/1000?grayscale`}
-                    alt={member.name}
-                    className="w-full h-full object-cover relative z-10 opacity-90 group-hover:scale-110 transition-transform duration-1000"
-                    referrerPolicy="no-referrer"
-                  />
+                  {member.image && (
+                    <img 
+                      src={member.image.startsWith('http') ? member.image : `/${member.image}`}
+                      alt={member.name}
+                      className="w-full h-full object-cover relative z-10 opacity-90 group-hover:scale-110 transition-transform duration-1000"
+                      referrerPolicy="no-referrer"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-linear-to-t from-iska-black via-transparent to-transparent opacity-60 z-20" />
                 </div>
               </motion.div>
@@ -225,7 +227,7 @@ export default function MemberProfile() {
                   </p>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm overflow-hidden">
-                      <img src="/assets/logo.jpg" alt="ISKA" className="w-full h-full object-cover" />
+                      <img src="/ISKA%20BANGLADESH%20LOGO.png" alt="ISKA Bangladesh" className="w-full h-full object-cover" />
                     </div>
                     <div>
                       <p className="text-xs font-bold text-iska-black">ISKA Bangladesh</p>
