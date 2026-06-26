@@ -57,8 +57,13 @@ export default function News() {
               <div className="grid md:grid-cols-2 gap-8 mt-12">
                 {MOCK_NEWS.map((item) => (
                   <div key={item.id} className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300">
-                    <div className="aspect-video bg-gray-100 overflow-hidden">
-                       <img src={`https://picsum.photos/seed/news-card${item.id}/600/400`} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div className="aspect-video relative overflow-hidden">
+                       <img 
+                        src={`https://picsum.photos/seed/news-card${item.id}/600/400`} 
+                        alt={item.title} 
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                        referrerPolicy="no-referrer"
+                       />
                     </div>
                     <div className="p-8 space-y-4">
                       <span className="text-iska-red text-[10px] font-bold uppercase tracking-[0.2em]">{item.category}</span>

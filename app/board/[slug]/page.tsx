@@ -23,57 +23,98 @@ export default function MemberProfile() {
       <Header />
       
       {/* Hero / Header Section */}
-      <section className="relative pt-32 pb-20 bg-iska-black overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--color-iska-blue)_0%,_transparent_60%)]" />
+      <section className="relative pt-20 pb-16 bg-iska-black overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-iska-blue/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-iska-red/5 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4" />
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]" />
         </div>
         
         <div className="container-custom relative z-10">
-          <Link href="/board" className="inline-flex items-center gap-2 text-gray-400 hover:text-white mb-12 transition-colors group">
-            <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-            <span>Back to Executive Board</span>
-          </Link>
+          {/* Refined Navigation */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="mb-8"
+          >
+            <Link 
+              href="/board" 
+              className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all group backdrop-blur-md"
+            >
+              <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+              <span className="text-sm font-semibold tracking-wide">Executive Board</span>
+            </Link>
+          </motion.div>
           
-          <div className="grid lg:grid-cols-3 gap-16 items-end">
-            <div className="lg:col-span-1">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className="lg:col-span-4">
               <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="aspect-[4/5] rounded-3xl bg-gray-900 border-4 border-white/10 overflow-hidden relative shadow-2xl"
+                initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="relative group"
               >
-                <div className="absolute inset-0 flex items-center justify-center text-white/5">
-                  <User size={240} strokeWidth={0.5} />
+                {/* Decorative Frame */}
+                <div className="absolute -inset-4 border border-white/5 rounded-[2.5rem] -z-10 group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-iska-blue/20 rounded-3xl blur-2xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                
+                <div className="aspect-[4/5] rounded-[2rem] bg-gray-900 border-4 border-white/10 overflow-hidden relative shadow-2xl">
+                  <div className="absolute inset-0 flex items-center justify-center text-white/5">
+                    <User size={300} strokeWidth={0.5} />
+                  </div>
+                  <img 
+                    src={`https://picsum.photos/seed/${member.slug}/800/1000?grayscale`}
+                    alt={member.name}
+                    className="w-full h-full object-cover relative z-10 opacity-90 group-hover:scale-110 transition-transform duration-1000"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-iska-black via-transparent to-transparent opacity-60 z-20" />
                 </div>
-                <img 
-                  src={`https://picsum.photos/seed/${member.slug}/800/1000?grayscale`}
-                  alt={member.name}
-                  className="w-full h-full object-cover relative z-10 opacity-80"
-                  referrerPolicy="no-referrer"
-                />
               </motion.div>
             </div>
             
-            <div className="lg:col-span-2 pb-6">
+            <div className="lg:col-span-8">
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
-                className="space-y-6"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="space-y-8"
               >
-                <div className="inline-block px-4 py-1.5 bg-iska-red rounded-lg text-white text-xs font-bold uppercase tracking-widest">
-                  {member.role}
-                </div>
-                <h1 className="text-5xl md:text-7xl font-display font-bold text-white tracking-tighter">
-                  {member.name}
-                </h1>
-                <div className="flex flex-wrap gap-8 text-gray-400">
-                  <div className="flex items-center gap-2">
-                    <Shield size={18} className="text-iska-blue" />
-                    <span>ISKA Bangladesh Board</span>
+                <div className="space-y-4">
+                  <div className="inline-flex items-center gap-3">
+                    <div className="w-10 h-[2px] bg-iska-red" />
+                    <span className="text-iska-red text-sm font-black uppercase tracking-[0.3em]">
+                      {member.role}
+                    </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Globe size={18} className="text-iska-blue" />
-                    <span>National Council</span>
+                  <h1 className="text-6xl md:text-8xl font-display font-bold text-white tracking-tighter leading-[0.9]">
+                    {member.name}
+                  </h1>
+                </div>
+
+                <div className="flex flex-wrap gap-4">
+                  <div className="flex items-center gap-3 px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl backdrop-blur-md hover:bg-white/10 transition-colors cursor-default group">
+                    <Shield size={20} className="text-iska-blue group-hover:scale-110 transition-transform" />
+                    <span className="text-gray-300 font-semibold tracking-tight">ISKA Bangladesh Board</span>
+                  </div>
+                  <div className="flex items-center gap-3 px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl backdrop-blur-md hover:bg-white/10 transition-colors cursor-default group">
+                    <Globe size={20} className="text-iska-blue group-hover:scale-110 transition-transform" />
+                    <span className="text-gray-300 font-semibold tracking-tight">National Council</span>
+                  </div>
+                </div>
+                
+                <div className="pt-8 flex gap-12 border-t border-white/10">
+                  <div>
+                    <p className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-1">Status</p>
+                    <p className="text-white font-bold flex items-center gap-2">
+                      <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                      Active Member
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-1">Term</p>
+                    <p className="text-white font-bold">2024 — Present</p>
                   </div>
                 </div>
               </motion.div>
@@ -83,7 +124,7 @@ export default function MemberProfile() {
       </section>
 
       {/* Content Section */}
-      <section className="py-24">
+      <section className="py-16">
         <div className="container-custom">
           <div className="grid lg:grid-cols-3 gap-16">
             <div className="lg:col-span-2 space-y-12">

@@ -34,8 +34,13 @@ export default function Events() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {MOCK_EVENTS.map((event) => (
               <div key={event.id} className="group flex flex-col md:flex-row bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500">
-                <div className="md:w-2/5 aspect-[4/5] bg-gray-100 relative overflow-hidden">
-                  <img src={event.image} alt={event.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div className="md:w-2/5 aspect-[4/5] relative overflow-hidden">
+                  <img 
+                    src={event.image} 
+                    alt={event.title} 
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                    referrerPolicy="no-referrer"
+                  />
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1 bg-iska-blue text-white text-[10px] font-bold uppercase tracking-widest rounded-full">Coming Soon</span>
                   </div>

@@ -22,7 +22,7 @@ export function Header() {
   return (
     <>
       {/* Top Bar */}
-      <div className="hidden lg:block bg-iska-blue text-white py-2 text-sm font-medium">
+      <div className="hidden lg:block bg-iska-blue text-white py-1.5 text-sm font-medium">
         <div className="container-custom flex justify-between items-center">
           <div className="flex items-center gap-6">
             <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-2 hover:text-iska-blue-light transition-colors">
@@ -47,7 +47,7 @@ export function Header() {
       </div>
 
       {/* Main Nav */}
-      <header className={`glass-nav transition-all duration-300 ${scrolled ? 'py-3' : 'py-5'}`}>
+      <header className={`glass-nav transition-all duration-300 ${scrolled ? 'py-2' : 'py-3'}`}>
         <nav className="container-custom flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden shadow-md group-hover:scale-105 transition-transform">

@@ -5,7 +5,7 @@ import { Header, Footer } from '@/components/Navigation';
 import { SectionHeading } from '@/components/UI';
 import { ProfileCard } from '@/components/Cards';
 import { REGIONS } from '@/lib/data';
-import { MapPin } from 'lucide-react';
+import { MapPin, User } from 'lucide-react';
 
 export default function RegionalDirectors() {
   return (
@@ -38,9 +38,17 @@ export default function RegionalDirectors() {
                 </div>
                 
                 <div className="space-y-4">
-                  <div className="py-12 border-2 border-dashed border-gray-200 rounded-xl flex flex-col items-center justify-center text-gray-400">
-                    <div className="w-16 h-16 bg-gray-100 rounded-full mb-4 animate-pulse" />
-                    <p className="font-bold uppercase tracking-widest text-xs">Appointment Pending</p>
+                  <div className="py-12 border-2 border-dashed border-gray-200 rounded-xl flex flex-col items-center justify-center text-gray-400 relative overflow-hidden group/pending">
+                    <img 
+                      src={`https://picsum.photos/seed/${region.name.toLowerCase()}-placeholder/400/400?grayscale&blur=5`}
+                      alt="Pending Appointment"
+                      className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale transition-all duration-700 group-hover/pending:scale-110"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="w-16 h-16 bg-gray-100/80 backdrop-blur-sm rounded-full mb-4 relative z-10 flex items-center justify-center shadow-inner">
+                      <User size={32} strokeWidth={1} className="text-gray-300" />
+                    </div>
+                    <p className="font-bold uppercase tracking-widest text-[10px] relative z-10 text-gray-400">Appointment Pending</p>
                   </div>
                   
                   <div className="pt-6 border-t border-gray-100">

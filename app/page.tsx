@@ -96,7 +96,7 @@ export default function Home() {
       </section>
 
       {/* Global Affiliation */}
-      <section className="py-12 bg-gray-50 border-y border-gray-100">
+      <section className="py-8 bg-gray-50 border-y border-gray-100">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 opacity-60 hover:opacity-100 transition-opacity">
             <p className="text-gray-500 font-bold uppercase tracking-[0.3em] text-xs">Part of the Global Network</p>
@@ -215,8 +215,13 @@ export default function Home() {
               <div className="space-y-8">
                 {MOCK_NEWS.map((news) => (
                   <div key={news.id} className="group flex flex-col md:flex-row gap-6 p-6 rounded-xl hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100">
-                    <div className="md:w-1/3 aspect-video bg-gray-100 rounded-lg overflow-hidden shrink-0">
-                       <img src={`https://picsum.photos/seed/news${news.id}/400/300`} alt={news.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <div className="md:w-1/3 aspect-video rounded-lg overflow-hidden shrink-0 relative">
+                       <img 
+                        src={`https://picsum.photos/seed/news${news.id}/400/300`} 
+                        alt={news.title} 
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                        referrerPolicy="no-referrer"
+                       />
                     </div>
                     <div className="space-y-3">
                       <span className="text-iska-red text-xs font-bold uppercase tracking-widest">{news.category}</span>
@@ -234,8 +239,13 @@ export default function Home() {
                 <SectionHeading title="Partners" />
                 <div className="grid grid-cols-2 gap-4">
                   {[1,2,3,4].map(i => (
-                    <div key={i} className="aspect-square bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-center grayscale hover:grayscale-0 transition-all p-6 opacity-60 hover:opacity-100">
-                      <span className="font-bold text-gray-300">LOGO {i}</span>
+                    <div key={i} className="aspect-square bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-center grayscale hover:grayscale-0 transition-all p-4 opacity-60 hover:opacity-100 overflow-hidden">
+                      <img 
+                        src={`https://picsum.photos/seed/partner${i}/200/200`} 
+                        alt={`Partner ${i}`} 
+                        className="w-full h-full object-contain"
+                        referrerPolicy="no-referrer"
+                      />
                     </div>
                   ))}
                 </div>

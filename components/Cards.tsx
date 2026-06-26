@@ -26,6 +26,15 @@ export function ProfileCard({ name, role, bio, slug }: { name: string, role: str
         <div className="absolute inset-0 flex items-center justify-center text-gray-200">
           <User size={140} strokeWidth={0.5} />
         </div>
+        
+        {/* Mock Image */}
+        <img 
+          src={`https://picsum.photos/seed/${name.replace(/\s+/g, '-').toLowerCase()}/800/1000?grayscale`}
+          alt={name}
+          className="absolute inset-0 w-full h-full object-cover relative z-10 group-hover:scale-110 transition-transform duration-700"
+          referrerPolicy="no-referrer"
+        />
+
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-iska-blue/5 rounded-full -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-24 h-24 bg-iska-red/5 rounded-full translate-y-1/2 -translate-x-1/2" />
@@ -124,7 +133,19 @@ export function RankingTable({ data }: { data: any[] }) {
                   {item.rank}
                 </span>
               </td>
-              <td className="px-6 py-4 font-bold text-iska-black group-hover:text-iska-blue transition-colors">{item.name}</td>
+              <td className="px-6 py-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gray-100 overflow-hidden shrink-0 border border-gray-100">
+                    <img 
+                      src={`https://picsum.photos/seed/${item.name.replace(/\s+/g, '-').toLowerCase()}/200/200`}
+                      alt={item.name}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <span className="font-bold text-iska-black group-hover:text-iska-blue transition-colors">{item.name}</span>
+                </div>
+              </td>
               <td className="px-6 py-4 text-gray-600 font-medium">{item.weight}</td>
               <td className="px-6 py-4 text-gray-600 font-medium font-mono text-xs">{item.record}</td>
               <td className="px-6 py-4">

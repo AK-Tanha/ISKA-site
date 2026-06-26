@@ -19,7 +19,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-linear-to-r from-iska-blue/20 to-transparent" />
       </div>
 
-      <div className="container-custom relative z-10 grid lg:grid-cols-2 gap-12 items-center pt-10 pb-20">
+      <div className="container-custom relative z-10 grid lg:grid-cols-2 gap-12 items-center pt-6 pb-12">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -109,7 +109,7 @@ export function Hero() {
 
 export function SectionHeading({ title, subtitle, centered = false, dark = false }: { title: string, subtitle?: string, centered?: boolean, dark?: boolean }) {
   return (
-    <div className={`space-y-4 mb-16 ${centered ? 'text-center mx-auto' : ''} ${centered ? 'max-w-2xl' : ''}`}>
+    <div className={`space-y-4 mb-10 ${centered ? 'text-center mx-auto' : ''} ${centered ? 'max-w-2xl' : ''}`}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
