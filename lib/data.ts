@@ -1,13 +1,31 @@
 export const NAV_LINKS = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
-  { name: 'Executive Board', href: '/board' },
-  { name: 'Regional Directors', href: '/directors' },
-  { name: 'Programs', href: '/programs' },
-  { name: 'Rankings', href: '/rankings' },
-  { name: 'Events', href: '/events' },
-  { name: 'News', href: '/news' },
-  { name: 'Gallery', href: '/gallery' },
+  { 
+    name: 'Leadership', 
+    href: '#',
+    submenu: [
+      { name: 'Executive Board', href: '/board' },
+      { name: 'Regional Directors', href: '/directors' },
+    ]
+  },
+  { 
+    name: 'Sports', 
+    href: '#',
+    submenu: [
+      { name: 'Programs', href: '/programs' },
+      { name: 'Rankings', href: '/rankings' },
+      { name: 'Events', href: '/events' },
+    ]
+  },
+  { 
+    name: 'Media', 
+    href: '#',
+    submenu: [
+      { name: 'News', href: '/news' },
+      { name: 'Gallery', href: '/gallery' },
+    ]
+  },
   { name: 'Contact', href: '/contact' },
 ];
 

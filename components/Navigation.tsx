@@ -4,12 +4,13 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Instagram, Facebook, Linkedin, Mail, Phone } from 'lucide-react';
+import { Menu, X, Instagram, Facebook, Linkedin, Mail, Phone, ChevronDown } from 'lucide-react';
 import { NAV_LINKS, SOCIAL_LINKS, CONTACT_INFO } from '@/lib/data';
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -66,17 +67,52 @@ export function Header() {
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
             {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`px-4 py-2 text-sm font-semibold rounded-md transition-colors ${
-                  pathname === link.href 
-                    ? 'text-iska-blue bg-iska-blue/5' 
-                    : 'text-gray-600 hover:text-iska-blue hover:bg-gray-50'
-                }`}
-              >
-                {link.name}
-              </Link>
+              <div key={link.name} className="relative group/menu">
+                {link.submenu ? (
+                  <>
+                    <button
+                      className={`px-4 py-2 text-sm font-semibold rounded-md transition-colors flex items-center gap-1.5 ${
+                        link.submenu.some(sub => pathname === sub.href)
+                          ? 'text-iska-blue bg-iska-blue/5' 
+                          : 'text-gray-600 hover:text-iska-blue hover:bg-gray-50'
+                      }`}
+                    >
+                      {link.name}
+                      <ChevronDown size={14} className="group-hover/menu:rotate-180 transition-transform duration-300" />
+                    </button>
+                    
+                    {/* Dropdown */}
+                    <div className="absolute top-full left-0 pt-2 opacity-0 translate-y-2 pointer-events-none group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:pointer-events-auto transition-all duration-300 z-50">
+                      <div className="bg-white rounded-xl shadow-2xl border border-gray-100 p-2 min-w-[200px]">
+                        {link.submenu.map((sub) => (
+                          <Link
+                            key={sub.href}
+                            href={sub.href}
+                            className={`block px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+                              pathname === sub.href
+                                ? 'text-iska-blue bg-iska-blue/5'
+                                : 'text-gray-600 hover:text-iska-blue hover:bg-gray-50'
+                            }`}
+                          >
+                            {sub.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className={`px-4 py-2 text-sm font-semibold rounded-md transition-colors ${
+                      pathname === link.href 
+                        ? 'text-iska-blue bg-iska-blue/5' 
+                        : 'text-gray-600 hover:text-iska-blue hover:bg-gray-50'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
 
@@ -100,18 +136,66 @@ export function Header() {
             >
               <div className="container-custom py-6 flex flex-col gap-2">
                 {NAV_LINKS.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`px-4 py-4 text-lg font-bold rounded-lg transition-colors ${
-                      pathname === link.href 
-                        ? 'text-iska-blue bg-iska-blue/5' 
-                        : 'text-gray-600 hover:text-iska-blue'
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
+                  <div key={link.name}>
+                    {link.submenu ? (
+                      <div className="flex flex-col">
+                        <button
+                          onClick={() => setActiveSubmenu(activeSubmenu === link.name ? null : link.name)}
+                          className={`flex items-center justify-between w-full px-4 py-4 text-lg font-bold rounded-lg transition-colors ${
+                            link.submenu.some(sub => pathname === sub.href)
+                              ? 'text-iska-blue bg-iska-blue/5' 
+                              : 'text-gray-600'
+                          }`}
+                        >
+                          {link.name}
+                          <ChevronDown 
+                            size={20} 
+                            className={`transition-transform duration-300 ${activeSubmenu === link.name ? 'rotate-180' : ''}`} 
+                          />
+                        </button>
+                        
+                        <AnimatePresence>
+                          {activeSubmenu === link.name && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              className="overflow-hidden bg-gray-50/50 rounded-lg mx-2"
+                            >
+                              <div className="flex flex-col p-2 gap-1">
+                                {link.submenu.map((sub) => (
+                                  <Link
+                                    key={sub.href}
+                                    href={sub.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className={`px-4 py-3 text-base font-semibold rounded-lg transition-colors ${
+                                      pathname === sub.href
+                                        ? 'text-iska-blue bg-iska-blue/5'
+                                        : 'text-gray-500 hover:text-iska-blue'
+                                    }`}
+                                  >
+                                    {sub.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className={`px-4 py-4 text-lg font-bold rounded-lg transition-colors ${
+                          pathname === link.href 
+                            ? 'text-iska-blue bg-iska-blue/5' 
+                            : 'text-gray-600 hover:text-iska-blue'
+                        }`}
+                      >
+                        {link.name}
+                      </Link>
+                    )}
+                  </div>
                 ))}
                 <div className="pt-6 mt-4 border-t border-gray-100 flex gap-6 px-4">
                   <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-iska-blue transition-colors">
