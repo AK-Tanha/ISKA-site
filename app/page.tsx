@@ -43,7 +43,7 @@ export default function Home() {
           </div>
           <div className="relative">
             <img 
-              src="https://picsum.photos/seed/training/800/600" 
+              src="iskahero.jpg" 
               alt="Combat Training" 
               className="rounded-2xl shadow-2xl relative z-10"
               referrerPolicy="no-referrer"
