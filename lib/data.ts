@@ -146,16 +146,22 @@ export const MOCK_EVENTS = [
 export const MOCK_NEWS = [
   {
     id: 1,
+    slug: 'iska-bangladesh-officially-recognized',
     title: 'ISKA Bangladesh Officially Recognized',
     date: '2026-04-29',
     excerpt: 'Bangladesh joins the global ISKA network as the newest South Asian member nation.',
     category: 'Official',
+    image: 'https://picsum.photos/seed/news1/1200/800',
+    content: 'ISKA Bangladesh has been officially recognized as the national governing body for kickboxing and combat sports in Bangladesh. This landmark recognition was confirmed by the ISKA World Headquarters, marking a significant milestone for the development of combat sports in the country.\n\nThe recognition grants ISKA Bangladesh the authority to sanction professional and amateur events, certify officials, and maintain national rankings across multiple disciplines including Kickboxing, Muay Thai, MMA, and Boxing.\n\n"Today marks a new chapter for Bangladeshi combat sports," said Mehedi Hassan Polok, National Director of ISKA Bangladesh. "With this official recognition, we can now provide our athletes with world-class opportunities and international pathways that were previously unavailable."\n\nISKA (International Sport Kickboxing Association) is one of the world\'s leading combat sports sanctioning bodies, operating in over 100 countries worldwide. The Bangladesh chapter aims to bring international standards to the grassroots level and ensure every Bangladeshi fighter has a pathway to the world stage.',
   },
   {
     id: 2,
+    slug: 'mehedi-hassan-polok-appointed-national-director',
     title: 'Mehedi Hassan Polok Appointed as National Director',
     date: '2026-05-05',
     excerpt: 'The ISKA World Headquarters confirms the appointment of the national leadership team.',
     category: 'Leadership',
+    image: 'https://picsum.photos/seed/news2/1200/800',
+    content: 'The ISKA World Headquarters has officially confirmed the appointment of Mehedi Hassan Polok as the National Director of ISKA Bangladesh. The appointment was formalized following a rigorous evaluation process and represents a major step forward for the organization.\n\nAs National Director, Polok will oversee all aspects of ISKA operations in Bangladesh, including event sanctioning, athlete development, official certification, and international relations. His leadership comes at a crucial time as the organization prepares for its inaugural events and programs.\n\n"ISKA Bangladesh was established with a singular vision: to provide our athletes with a professional, safe, and world-class platform to showcase their skills," stated Polok. "As the official national governing body, we are committed to bringing international standards to the grassroots level."\n\nThe appointment has been welcomed by the Bangladeshi combat sports community, with many seeing it as a turning point for the professionalization of the sport in the country. Polok brings extensive experience in sports management and a deep passion for combat sports development.',
   },
 ];
