@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { useParams, notFound } from 'next/navigation';
 import { Header, Footer } from '@/components/Navigation';
 import { EXECUTIVE_BOARD } from '@/lib/data';
@@ -64,11 +65,13 @@ export default function MemberProfile() {
                     <User size={300} strokeWidth={0.5} />
                   </div>
                   {member.image && (
-                    <img 
+                    <Image 
                       src={member.image.startsWith('http') ? member.image : `/${member.image}`}
                       alt={member.name}
-                      className="w-full h-full object-cover relative z-10 opacity-90 group-hover:scale-110 transition-transform duration-1000"
+                      fill
+                      className="object-cover relative z-10 opacity-90 group-hover:scale-110 transition-transform duration-1000"
                       referrerPolicy="no-referrer"
+                      sizes="(max-width: 1024px) 100vw, 33vw"
                     />
                   )}
                   <div className="absolute inset-0 bg-linear-to-t from-iska-black via-transparent to-transparent opacity-60 z-20" />
@@ -90,7 +93,7 @@ export default function MemberProfile() {
                       {member.role}
                     </span>
                   </div>
-                  <h1 className="text-6xl md:text-8xl font-display font-bold text-white tracking-tighter leading-[0.9]">
+                  <h1 className="text-3xl sm:text-4xl md:text-8xl font-display font-bold text-white tracking-tighter leading-[0.9]">
                     {member.name}
                   </h1>
                 </div>
@@ -131,12 +134,12 @@ export default function MemberProfile() {
           <div className="grid lg:grid-cols-3 gap-16">
             <div className="lg:col-span-2 space-y-12">
               <div className="space-y-6">
-                <h2 className="text-3xl font-display font-bold text-iska-black flex items-center gap-3">
+                <h2 className="text-lg sm:text-xl font-display font-bold text-iska-black flex items-center gap-3">
                   <span className="w-8 h-1 bg-iska-red rounded-full" />
                   Biography
                 </h2>
                 <div className="prose prose-lg text-gray-600 max-w-none">
-                  <p className="text-xl leading-relaxed">
+                  <p className="text-base sm:text-xl leading-relaxed">
                     {member.bio}
                   </p>
                   <p className="mt-6 leading-relaxed">
@@ -150,7 +153,7 @@ export default function MemberProfile() {
 
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="p-8 rounded-2xl bg-gray-50 border border-gray-100">
-                  <h3 className="text-xl font-display font-bold mb-4 flex items-center gap-2 text-iska-blue">
+                  <h3 className="text-lg sm:text-xl font-display font-bold mb-4 flex items-center gap-2 text-iska-blue">
                     <Trophy size={20} /> Key Responsibilities
                   </h3>
                   <ul className="space-y-3 text-gray-600">
@@ -169,7 +172,7 @@ export default function MemberProfile() {
                   </ul>
                 </div>
                 <div className="p-8 rounded-2xl bg-gray-50 border border-gray-100">
-                  <h3 className="text-xl font-display font-bold mb-4 flex items-center gap-2 text-iska-blue">
+                  <h3 className="text-lg sm:text-xl font-display font-bold mb-4 flex items-center gap-2 text-iska-blue">
                     <Shield size={20} /> Vision
                   </h3>
                   <p className="text-gray-600 leading-relaxed italic">
@@ -182,7 +185,7 @@ export default function MemberProfile() {
             <div className="lg:col-span-1">
               <div className="sticky top-32 space-y-8">
                 <div className="p-8 rounded-3xl bg-iska-blue text-white shadow-xl">
-                  <h3 className="text-xl font-display font-bold mb-6">Contact Information</h3>
+                  <h3 className="text-lg sm:text-xl font-display font-bold mb-6">Contact Information</h3>
                   <div className="space-y-6">
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center">
@@ -220,14 +223,14 @@ export default function MemberProfile() {
                   </div>
                 </div>
 
-                <div className="p-8 rounded-3xl border border-gray-100 bg-gray-50/50">
-                  <h3 className="text-lg font-display font-bold mb-4">Official Verification</h3>
+                <div className="p-6 sm:p-8 rounded-3xl border border-gray-100 bg-gray-50/50">
+                  <h3 className="text-base sm:text-lg font-display font-bold mb-4">Official Verification</h3>
                   <p className="text-sm text-gray-500 mb-6 leading-relaxed">
                     This profile is officially verified by the ISKA Bangladesh National Council. All board members are appointed through rigorous vetting processes.
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm overflow-hidden">
-                      <img src="/ISKA%20BANGLADESH%20LOGO.png" alt="ISKA Bangladesh" className="w-full h-full object-cover" />
+                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm overflow-hidden relative">
+                      <Image src="/ISKA%20BANGLADESH%20LOGO.png" alt="ISKA Bangladesh" fill className="object-cover" />
                     </div>
                     <div>
                       <p className="text-xs font-bold text-iska-black">ISKA Bangladesh</p>

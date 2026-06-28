@@ -43,9 +43,9 @@ export default function Board() {
             {REGIONS.map((region, idx) => (
               <div key={idx} className="group p-8 bg-gray-50 rounded-2xl border border-gray-100 text-center hover:bg-iska-blue hover:text-white transition-all duration-300">
                 <div className="w-12 h-12 bg-white/20 rounded-full mx-auto mb-4 flex items-center justify-center opacity-50 group-hover:opacity-100">
-                  <span className="font-bold text-lg">{region.name[0]}</span>
+                  <span className="font-bold text-base sm:text-lg">{region.name[0]}</span>
                 </div>
-                <h4 className="font-display font-bold text-lg mb-1">{region.name}</h4>
+                <h4 className="font-display font-bold text-base sm:text-lg mb-1">{region.name}</h4>
                 <p className="text-[10px] uppercase font-bold tracking-widest text-iska-red group-hover:text-iska-blue-light transition-colors">
                   {region.status}
                 </p>

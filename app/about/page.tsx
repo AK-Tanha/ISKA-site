@@ -26,7 +26,7 @@ export default function About() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div className="space-y-6 text-gray-600 leading-relaxed text-lg">
+            <div className="space-y-6 text-gray-600 leading-relaxed text-base sm:text-lg">
               <p>
                 ISKA Bangladesh was officially established on 29 April 2026 as the national representative body of the International Sport Kickboxing Association (ISKA) in Bangladesh. As the new South Asian member nation of ISKA, Bangladesh has been officially recognized within ISKA&apos;s global network, further strengthening the organization&apos;s presence across the international combat sports community.
               </p>
@@ -42,14 +42,14 @@ export default function About() {
                   <div className="w-12 h-12 bg-iska-blue/10 rounded-lg flex items-center justify-center text-iska-blue">
                     <Target size={24} />
                   </div>
-                  <h4 className="font-display font-bold text-xl text-iska-black">Our Vision</h4>
+                  <h4 className="font-display font-bold text-lg sm:text-xl text-iska-black">Our Vision</h4>
                   <p className="text-sm">To build a stronger, safer, and more professional combat sports community in Bangladesh.</p>
                 </div>
                 <div className="space-y-4">
                   <div className="w-12 h-12 bg-iska-red/10 rounded-lg flex items-center justify-center text-iska-red">
                     <Shield size={24} />
                   </div>
-                  <h4 className="font-display font-bold text-xl text-iska-black">Our Mission</h4>
+                  <h4 className="font-display font-bold text-lg sm:text-xl text-iska-black">Our Mission</h4>
                   <p className="text-sm">Create sustainable opportunities for athletes and officials to compete globally.</p>
                 </div>
               </div>
@@ -57,7 +57,7 @@ export default function About() {
             
             <div className="space-y-8">
               <div className="p-8 bg-gray-50 rounded-2xl border border-gray-100">
-                <h3 className="text-2xl font-display font-bold mb-6 text-iska-blue">Core Values</h3>
+                <h3 className="text-xl sm:text-2xl font-display font-bold mb-6 text-iska-blue">Core Values</h3>
                 <ul className="space-y-4">
                   {[
                     { title: 'Excellence', desc: 'Highest standards in officiating and athlete performance.' },
@@ -80,13 +80,13 @@ export default function About() {
                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                   <Globe size={120} />
                 </div>
-                <h3 className="text-2xl font-display font-bold mb-4 relative z-10">International Recognition</h3>
+                <h3 className="text-xl sm:text-2xl font-display font-bold mb-4 relative z-10">International Recognition</h3>
                 <p className="text-gray-400 text-sm mb-6 relative z-10 leading-relaxed">
                   Bangladeshi athletes can now compete for official ISKA World and Regional titles, with their results tracked in the global database.
                 </p>
                 <div className="flex items-center gap-4 relative z-10">
                   <Award className="text-iska-blue-light" size={32} />
-                  <span className="font-bold text-lg">ISKA Global Network Member</span>
+                  <span className="font-bold text-base sm:text-lg">ISKA Global Network Member</span>
                 </div>
               </div>
             </div>

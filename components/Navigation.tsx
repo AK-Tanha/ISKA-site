@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
@@ -50,16 +51,17 @@ export function Header() {
       <header className={`glass-nav transition-all duration-300 ${scrolled ? 'py-2' : 'py-3'}`}>
         <nav className="container-custom flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden shadow-md group-hover:scale-105 transition-transform">
-                 <img 
+            <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden shadow-md group-hover:scale-105 transition-transform relative">
+                 <Image 
                   src="/ISKA%20BANGLADESH%20LOGO.png" 
                   alt="ISKA Bangladesh Logo" 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                   referrerPolicy="no-referrer"
                 />
             </div>
             <div className="flex flex-col">
-              <span className="font-display font-bold text-xl tracking-tighter text-iska-blue leading-none">ISKA</span>
+              <span className="font-display font-bold text-lg sm:text-xl tracking-tighter text-iska-blue leading-none">ISKA</span>
               <span className="text-[10px] font-bold tracking-[0.2em] text-iska-red leading-tight">BANGLADESH</span>
             </div>
           </Link>
@@ -141,7 +143,7 @@ export function Header() {
                       <div className="flex flex-col">
                         <button
                           onClick={() => setActiveSubmenu(activeSubmenu === link.name ? null : link.name)}
-                          className={`flex items-center justify-between w-full px-4 py-4 text-lg font-bold rounded-lg transition-colors ${
+                          className={`flex items-center justify-between w-full px-4 py-4 text-base sm:text-lg font-bold rounded-lg transition-colors ${
                             link.submenu.some(sub => pathname === sub.href)
                               ? 'text-iska-blue bg-iska-blue/5' 
                               : 'text-gray-600'
@@ -186,7 +188,7 @@ export function Header() {
                       <Link
                         href={link.href}
                         onClick={() => setIsOpen(false)}
-                        className={`px-4 py-4 text-lg font-bold rounded-lg transition-colors ${
+                        className={`px-4 py-4 text-base sm:text-lg font-bold rounded-lg transition-colors ${
                           pathname === link.href 
                             ? 'text-iska-blue bg-iska-blue/5' 
                             : 'text-gray-600 hover:text-iska-blue'
@@ -224,16 +226,17 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden bg-white">
-                 <img 
+              <div className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden bg-white relative">
+                 <Image 
                   src="/ISKA%20BANGLADESH%20LOGO.png" 
                   alt="ISKA Bangladesh Logo" 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                   referrerPolicy="no-referrer"
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-display font-bold text-lg tracking-tighter leading-none">ISKA</span>
+                <span className="font-display font-bold text-base sm:text-lg tracking-tighter leading-none">ISKA</span>
                 <span className="text-[9px] font-bold tracking-[0.2em] text-iska-red leading-tight">BANGLADESH</span>
               </div>
             </Link>
@@ -254,7 +257,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-bold text-lg mb-6 border-l-4 border-iska-red pl-4">Quick Links</h4>
+              <h4 className="font-display font-bold text-base sm:text-lg mb-6 border-l-4 border-iska-red pl-4">Quick Links</h4>
             <ul className="space-y-4 text-sm text-gray-400">
               <li><Link href="/about" className="hover:text-white transition-colors">About ISKA</Link></li>
               <li><Link href="/programs" className="hover:text-white transition-colors">Programs & Services</Link></li>
@@ -265,7 +268,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-bold text-lg mb-6 border-l-4 border-iska-red pl-4">International</h4>
+            <h4 className="font-display font-bold text-base sm:text-lg mb-6 border-l-4 border-iska-red pl-4">International</h4>
             <ul className="space-y-4 text-sm text-gray-400">
               <li><a href="https://www.iskaworldhq.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">ISKA World HQ</a></li>
               <li><a href={SOCIAL_LINKS.iskaAsia} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">ISKA Asia Directors</a></li>
@@ -275,7 +278,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-bold text-lg mb-6 border-l-4 border-iska-red pl-4">Newsletter</h4>
+            <h4 className="font-display font-bold text-base sm:text-lg mb-6 border-l-4 border-iska-red pl-4">Newsletter</h4>
             <p className="text-gray-400 text-sm mb-4">Stay updated with latest news and event announcements.</p>
             <form className="flex gap-2">
               <input 

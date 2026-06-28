@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Header, Footer } from '@/components/Navigation';
 import { SectionHeading } from '@/components/UI';
 import { MOCK_NEWS } from '@/lib/data';
@@ -33,14 +34,14 @@ export default function News() {
             {/* Featured Post */}
             <div className="lg:col-span-2">
               <div className="group relative h-[500px] rounded-[2rem] overflow-hidden shadow-2xl">
-                <img src="https://picsum.photos/seed/iska-news/1200/800" alt="Featured News" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+                <Image src="https://picsum.photos/seed/iska-news/1200/800" alt="Featured News" fill className="object-cover group-hover:scale-105 transition-transform duration-1000" sizes="(max-width: 1024px) 100vw, 66vw" />
                 <div className="absolute inset-0 bg-linear-to-t from-iska-black via-iska-black/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-10 w-full">
                   <span className="px-3 py-1 bg-iska-red text-white text-xs font-bold uppercase tracking-widest rounded-full mb-4 inline-block">Official Announcement</span>
-                  <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4 tracking-tighter leading-tight max-w-2xl">
+                  <h2 className="text-2xl sm:text-3xl md:text-5xl font-display font-bold text-white mb-4 tracking-tighter leading-tight max-w-2xl">
                     ISKA Bangladesh Launches National Athlete Database
                   </h2>
-                  <p className="text-gray-300 text-lg mb-8 max-w-xl">
+                  <p className="text-gray-300 text-base sm:text-lg mb-8 max-w-xl">
                     A revolutionary step towards professionalizing combat sports in the country through digital tracking.
                   </p>
                   <div className="flex items-center gap-6">
@@ -58,16 +59,18 @@ export default function News() {
                 {MOCK_NEWS.map((item) => (
                   <div key={item.id} className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300">
                     <div className="aspect-video relative overflow-hidden">
-                       <img 
-                        src={`https://picsum.photos/seed/news-card${item.id}/600/400`} 
-                        alt={item.title} 
-                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                        referrerPolicy="no-referrer"
-                       />
+                       <Image 
+                         src={`https://picsum.photos/seed/news-card${item.id}/600/400`} 
+                         alt={item.title} 
+                         fill
+                         className="object-cover group-hover:scale-110 transition-transform duration-500" 
+                         referrerPolicy="no-referrer"
+                         sizes="(max-width: 768px) 100vw, 33vw"
+                        />
                     </div>
                     <div className="p-8 space-y-4">
                       <span className="text-iska-red text-[10px] font-bold uppercase tracking-[0.2em]">{item.category}</span>
-                      <h3 className="text-2xl font-display font-bold group-hover:text-iska-blue transition-colors leading-tight">{item.title}</h3>
+                      <h3 className="text-lg sm:text-xl font-display font-bold group-hover:text-iska-blue transition-colors leading-tight">{item.title}</h3>
                       <p className="text-gray-500 text-sm line-clamp-2 leading-relaxed">{item.excerpt}</p>
                       <div className="pt-4 flex justify-between items-center text-xs text-gray-400 font-bold border-t border-gray-50">
                         <span>{item.date}</span>
@@ -84,7 +87,7 @@ export default function News() {
             {/* Sidebar */}
             <div className="space-y-12">
               <div className="p-8 bg-iska-black text-white rounded-[2rem]">
-                <h4 className="text-xl font-display font-bold mb-6 border-l-4 border-iska-red pl-4">Categories</h4>
+                <h4 className="text-lg sm:text-xl font-display font-bold mb-6 border-l-4 border-iska-red pl-4">Categories</h4>
                 <ul className="space-y-4">
                   {['Press Releases', 'Tournament Reports', 'Official Notices', 'Training & Seminars', 'Interviews'].map((cat, idx) => (
                     <li key={idx} className="flex justify-between items-center group cursor-pointer">
@@ -96,12 +99,12 @@ export default function News() {
               </div>
 
               <div className="p-8 border border-gray-100 rounded-[2rem] bg-white">
-                <h4 className="text-xl font-display font-bold mb-6">Recent Reports</h4>
+                <h4 className="text-lg sm:text-xl font-display font-bold mb-6">Recent Reports</h4>
                 <div className="space-y-6">
                   {[1, 2, 3].map(i => (
                     <div key={i} className="flex gap-4 group cursor-pointer">
-                      <div className="w-20 h-20 bg-gray-50 rounded-xl overflow-hidden shrink-0">
-                         <img src={`https://picsum.photos/seed/report${i}/200/200`} alt="Report" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" />
+                      <div className="w-20 h-20 bg-gray-50 rounded-xl overflow-hidden shrink-0 relative">
+                         <Image src={`https://picsum.photos/seed/report${i}/200/200`} alt="Report" fill className="object-cover transition-all" sizes="80px" />
                       </div>
                       <div className="space-y-1">
                         <h5 className="font-bold text-sm text-iska-black group-hover:text-iska-blue transition-colors leading-snug">Rules & Regs Seminar Dhaka 2026 Recap</h5>

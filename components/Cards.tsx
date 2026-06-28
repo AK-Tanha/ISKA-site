@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import { User, Trophy, Shield, GraduationCap, Scale, TrendingUp, Globe, Home, UserPlus, ClipboardCheck, UserCheck } from 'lucide-react';
 
@@ -29,11 +30,13 @@ export function ProfileCard({ name, image, role, bio, slug }: { name: string, im
         
         {/* Image */}
         {image && (
-          <img 
+          <Image 
             src={image.startsWith('http') ? image : `/${image}`}
             alt={name}
-            className="absolute inset-0 w-full h-full object-cover relative z-10 group-hover:scale-110 transition-transform duration-700"
+            fill
+            className="object-cover relative z-10 group-hover:scale-110 transition-transform duration-700"
             referrerPolicy="no-referrer"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         )}
 
@@ -55,7 +58,7 @@ export function ProfileCard({ name, image, role, bio, slug }: { name: string, im
         <div className="absolute -top-6 right-8 w-12 h-12 bg-iska-blue text-white rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 -translate-y-4 group-hover:translate-y-0 transition-all duration-500 shadow-xl rotate-3 group-hover:rotate-0">
           <Trophy size={20} />
         </div>
-        <h4 className="font-display font-bold text-xl text-iska-black group-hover:text-iska-blue transition-colors">{name}</h4>
+        <h4 className="font-display font-bold text-lg sm:text-xl text-iska-black group-hover:text-iska-blue transition-colors">{name}</h4>
         <div className="flex items-center gap-2">
           <div className="w-4 h-0.5 bg-iska-red" />
           <p className="text-iska-red text-[10px] font-bold uppercase tracking-widest">{role}</p>
@@ -100,12 +103,12 @@ export function ServiceCard({ title, description, iconName }: { title: string, d
   return (
     <motion.div
       whileHover={{ y: -5 }}
-      className="p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group"
+      className="p-5 sm:p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group"
     >
       <div className="w-14 h-14 bg-iska-blue/5 rounded-xl flex items-center justify-center text-iska-blue mb-6 group-hover:bg-iska-blue group-hover:text-white transition-colors duration-300">
         <Icon size={28} />
       </div>
-      <h3 className="text-xl font-display font-bold mb-3 group-hover:text-iska-blue transition-colors">{title}</h3>
+      <h3 className="text-lg sm:text-xl font-display font-bold mb-3 group-hover:text-iska-blue transition-colors">{title}</h3>
       <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
     </motion.div>
   );
@@ -137,12 +140,14 @@ export function RankingTable({ data }: { data: any[] }) {
               </td>
               <td className="px-6 py-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gray-100 overflow-hidden shrink-0 border border-gray-100">
-                    <img 
+                  <div className="w-10 h-10 rounded-full bg-gray-100 overflow-hidden shrink-0 border border-gray-100 relative">
+                    <Image 
                       src={`https://picsum.photos/seed/${item.name.replace(/\s+/g, '-').toLowerCase()}/200/200`}
                       alt={item.name}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
                       referrerPolicy="no-referrer"
+                      sizes="40px"
                     />
                   </div>
                   <span className="font-bold text-iska-black group-hover:text-iska-blue transition-colors">{item.name}</span>

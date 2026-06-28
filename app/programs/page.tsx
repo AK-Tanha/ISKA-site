@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Header, Footer } from '@/components/Navigation';
 import { SectionHeading } from '@/components/UI';
 import { ServiceCard } from '@/components/Cards';
@@ -42,7 +43,7 @@ export default function Programs() {
         <div className="container-custom">
           <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-16 shadow-xl border border-gray-100 grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-3xl font-display font-bold text-iska-blue">Register Your Club</h2>
+              <h2 className="text-lg sm:text-xl font-display font-bold text-iska-blue">Register Your Club</h2>
               <p className="text-gray-600 leading-relaxed">
                 Affiliate your gym with the official national governing body. Gain access to sanctioned events, certified coaching programs, and the national ranking system.
               </p>
@@ -60,8 +61,8 @@ export default function Programs() {
               </ul>
               <button className="btn-primary w-full md:w-auto">Start Registration</button>
             </div>
-            <div className="bg-gray-100 rounded-2xl aspect-square flex items-center justify-center overflow-hidden">
-               <img src="https://picsum.photos/seed/gym/600/600" alt="Club Registration" className="w-full h-full object-cover" />
+            <div className="bg-gray-100 rounded-2xl aspect-square flex items-center justify-center overflow-hidden relative">
+               <Image src="https://picsum.photos/seed/gym/600/600" alt="Club Registration" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Header, Footer } from '@/components/Navigation';
 import { SectionHeading } from '@/components/UI';
 import { MOCK_EVENTS } from '@/lib/data';
@@ -34,25 +35,27 @@ export default function Events() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {MOCK_EVENTS.map((event) => (
               <div key={event.id} className="group flex flex-col md:flex-row bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500">
-                <div className="md:w-2/5 aspect-[4/5] relative overflow-hidden">
-                  <img 
+                <div className="md:w-2/5 aspect-video md:aspect-[4/5] relative overflow-hidden">
+                  <Image 
                     src={event.image} 
                     alt={event.title} 
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700" 
                     referrerPolicy="no-referrer"
+                    sizes="(max-width: 768px) 100vw, 40vw"
                   />
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1 bg-iska-blue text-white text-[10px] font-bold uppercase tracking-widest rounded-full">Coming Soon</span>
                   </div>
                 </div>
                 
-                <div className="md:w-3/5 p-8 flex flex-col justify-between">
+                <div className="md:w-3/5 p-6 sm:p-8 flex flex-col justify-between">
                   <div className="space-y-4">
                     <div className="flex items-center gap-4 text-iska-red font-bold text-xs uppercase tracking-widest">
                       <span className="flex items-center gap-1"><Calendar size={14} /> {event.date}</span>
                       <span className="flex items-center gap-1"><Clock size={14} /> 6:00 PM</span>
                     </div>
-                    <h3 className="text-2xl font-display font-bold group-hover:text-iska-blue transition-colors leading-tight">{event.title}</h3>
+                    <h3 className="text-lg sm:text-xl font-display font-bold group-hover:text-iska-blue transition-colors leading-tight">{event.title}</h3>
                     <p className="text-gray-500 text-sm flex items-center gap-2">
                       <MapPin size={16} className="text-iska-blue" /> {event.location}
                     </p>
@@ -78,13 +81,13 @@ export default function Events() {
           </div>
 
           {/* Countdown / Featured Section */}
-          <div className="mt-20 p-12 bg-iska-black rounded-[3rem] relative overflow-hidden">
+          <div className="mt-20 p-6 sm:p-12 bg-iska-black rounded-[3rem] relative overflow-hidden">
             <div className="absolute top-0 right-0 w-1/2 h-full bg-iska-blue/20 blur-3xl rounded-full" />
             <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <span className="text-iska-red font-bold uppercase tracking-[0.3em] text-xs">Featured Event</span>
-                <h2 className="text-4xl md:text-5xl font-display font-bold text-white tracking-tighter">ISKA World Qualifier 2026</h2>
-                <p className="text-gray-400 max-w-md">The biggest stage for combat sports in Bangladesh is coming this winter. Winners qualify for the ISKA World Championships.</p>
+                <h2 className="text-lg sm:text-xl md:text-5xl font-display font-bold text-white tracking-tighter">ISKA World Qualifier 2026</h2>
+                <p className="text-gray-400 max-w-md text-sm sm:text-base">The biggest stage for combat sports in Bangladesh is coming this winter. Winners qualify for the ISKA World Championships.</p>
                 
                 <div className="grid grid-cols-4 gap-4">
                   {[
@@ -94,15 +97,15 @@ export default function Events() {
                     { label: 'Sec', val: '08' },
                   ].map((item, idx) => (
                     <div key={idx} className="bg-white/5 backdrop-blur-md rounded-xl p-4 text-center border border-white/10">
-                      <p className="text-3xl font-display font-bold text-white leading-none">{item.val}</p>
+                      <p className="text-xl sm:text-2xl font-display font-bold text-white leading-none">{item.val}</p>
                       <p className="text-[10px] uppercase font-bold text-iska-red tracking-widest mt-2">{item.label}</p>
                     </div>
                   ))}
                 </div>
               </div>
               <div className="relative">
-                <div className="aspect-square bg-gray-800 rounded-2xl overflow-hidden border-4 border-white/10 rotate-3 group-hover:rotate-0 transition-transform duration-500 shadow-2xl">
-                   <img src="https://picsum.photos/seed/fighter/800/800" alt="Main Event" className="w-full h-full object-cover" />
+                <div className="aspect-square bg-gray-800 rounded-2xl overflow-hidden border-4 border-white/10 rotate-3 group-hover:rotate-0 transition-transform duration-500 shadow-2xl relative">
+                   <Image src="https://picsum.photos/seed/fighter/800/800" alt="Main Event" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Header, Footer } from '@/components/Navigation';
 import { SectionHeading } from '@/components/UI';
 import { motion, AnimatePresence } from 'motion/react';
@@ -64,10 +65,12 @@ export default function Gallery() {
                 animate={{ opacity: 1, scale: 1 }}
                 className={`group relative overflow-hidden rounded-[2rem] bg-gray-100 ${item.span}`}
               >
-                <img 
+                <Image 
                   src={`https://picsum.photos/seed/${item.seed}/800/800`} 
                   alt="Gallery item"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 grayscale hover:grayscale-0"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-iska-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 p-8 flex flex-col justify-end">
                   <div className="space-y-2">

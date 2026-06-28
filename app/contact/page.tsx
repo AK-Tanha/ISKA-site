@@ -26,7 +26,7 @@ export default function Contact() {
                   <Mail size={24} />
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-lg text-iska-black">Email Us</h4>
+                  <h4 className="font-display font-bold text-base sm:text-lg text-iska-black">Email Us</h4>
                   <p className="text-gray-500 text-sm">{CONTACT_INFO.email}</p>
                 </div>
               </div>
@@ -36,7 +36,7 @@ export default function Contact() {
                   <Phone size={24} />
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-lg text-iska-black">Call Us</h4>
+                  <h4 className="font-display font-bold text-base sm:text-lg text-iska-black">Call Us</h4>
                   <p className="text-gray-500 text-sm">{CONTACT_INFO.phone}</p>
                 </div>
               </div>
@@ -46,7 +46,7 @@ export default function Contact() {
                   <MapPin size={24} />
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-lg text-iska-black">Office Location</h4>
+                  <h4 className="font-display font-bold text-base sm:text-lg text-iska-black">Office Location</h4>
                   <p className="text-gray-500 text-sm">Dhaka, Bangladesh</p>
                   <p className="text-gray-400 text-xs mt-1 italic">&quot;Full address details available upon verified request.&quot;</p>
                 </div>
@@ -56,7 +56,7 @@ export default function Contact() {
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <div className="bg-white p-8 md:p-12 rounded-[2.5rem] border border-gray-100 shadow-xl">
-                <h3 className="text-3xl font-display font-bold mb-8 text-iska-black">Send a Message</h3>
+                <h3 className="text-lg sm:text-xl font-display font-bold mb-8 text-iska-black">Send a Message</h3>
                 <form className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
