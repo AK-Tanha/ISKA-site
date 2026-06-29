@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -18,6 +18,21 @@ export function Header() {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
+
+  // Close menu on Escape key
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') setIsOpen(false);
   }, []);
 
   return (
@@ -48,7 +63,9 @@ export function Header() {
       </div>
 
       {/* Main Nav */}
-      <header className={`glass-nav transition-all duration-300 ${scrolled ? 'py-2' : 'py-3'}`}>
+      <header
+        className={`glass-nav relative transition-all duration-300 ${scrolled ? 'py-2' : 'py-3'}`}
+      >
         <nav className="container-custom flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden shadow-md group-hover:scale-105 transition-transform relative">
@@ -122,28 +139,88 @@ export function Header() {
           <button 
             className="lg:hidden p-2 text-iska-blue focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </nav>
+      </header>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden bg-white border-t border-gray-100 overflow-hidden"
-            >
-              <div className="container-custom py-6 flex flex-col gap-2">
+      {/* Mobile Menu - Full Screen Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 z-[60] lg:hidden bg-white flex flex-col"
+            onKeyDown={handleKeyDown}
+          >
+            {/* Background decorative SVGs */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <svg className="absolute -top-20 -right-20 w-96 h-96 opacity-[0.04]" viewBox="0 0 400 400" fill="none">
+                <circle cx="280" cy="80" r="240" stroke="#003DA5" strokeWidth="2" />
+                <circle cx="280" cy="80" r="190" stroke="#003DA5" strokeWidth="1.5" />
+                <circle cx="280" cy="80" r="140" stroke="#00B8F0" strokeWidth="1" />
+                <circle cx="280" cy="80" r="90" stroke="#003DA5" strokeWidth="0.5" strokeDasharray="6 6" />
+              </svg>
+              <svg className="absolute -bottom-16 -left-16 w-80 h-80 opacity-[0.03]" viewBox="0 0 300 300" fill="none">
+                <path d="M10 290 Q 80 180 160 240 T 290 180 L 290 290 Z" fill="#003DA5" />
+                <path d="M10 290 Q 120 140 200 260 T 290 200 L 290 290 Z" fill="#00B8F0" />
+              </svg>
+              <svg className="absolute inset-0 w-full h-full opacity-[0.012]" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <pattern id="dot-grid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <circle cx="2" cy="2" r="1" fill="#003DA5" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#dot-grid)" />
+              </svg>
+              <svg className="absolute top-1/3 right-0 w-32 h-32 opacity-[0.02]" viewBox="0 0 100 100" fill="none">
+                <line x1="0" y1="0" x2="100" y2="100" stroke="#E10613" strokeWidth="0.5" />
+                <line x1="20" y1="0" x2="100" y2="80" stroke="#E10613" strokeWidth="0.5" />
+                <line x1="40" y1="0" x2="100" y2="60" stroke="#E10613" strokeWidth="0.5" />
+              </svg>
+            </div>
+
+            {/* Close button bar */}
+            <div className="relative flex items-center justify-between px-4 pt-3 pb-2 border-b border-gray-100">
+              <Link href="/" className="flex items-center gap-3 group" onClick={() => setIsOpen(false)}>
+                <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden shadow-md group-hover:scale-105 transition-transform relative">
+                   <Image 
+                    src="/ISKA%20BANGLADESH%20LOGO.png" 
+                    alt="ISKA Bangladesh Logo" 
+                    fill
+                    className="object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-display font-bold text-lg tracking-tighter text-iska-blue leading-none">ISKA</span>
+                  <span className="text-[10px] font-bold tracking-[0.2em] text-iska-red leading-tight">BANGLADESH</span>
+                </div>
+              </Link>
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="p-2 text-iska-blue focus:outline-none"
+                aria-label="Close menu"
+              >
+                <X size={28} />
+              </button>
+            </div>
+
+            {/* Nav items */}
+            <div className="relative z-10 flex-1 overflow-y-auto px-4 sm:px-6">
+              <div className="max-w-7xl mx-auto py-4 flex flex-col gap-2">
                 {NAV_LINKS.map((link) => (
                   <div key={link.name}>
                     {link.submenu ? (
                       <div className="flex flex-col">
                         <button
                           onClick={() => setActiveSubmenu(activeSubmenu === link.name ? null : link.name)}
-                          className={`flex items-center justify-between w-full px-4 py-4 text-base sm:text-lg font-bold rounded-lg transition-colors ${
+                          className={`flex items-center justify-between w-full px-4 py-4 text-base font-bold rounded-lg transition-colors ${
                             link.submenu.some(sub => pathname === sub.href)
                               ? 'text-iska-blue bg-iska-blue/5' 
                               : 'text-gray-600'
@@ -155,40 +232,36 @@ export function Header() {
                             className={`transition-transform duration-300 ${activeSubmenu === link.name ? 'rotate-180' : ''}`} 
                           />
                         </button>
-                        
-                        <AnimatePresence>
-                          {activeSubmenu === link.name && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: 'auto' }}
-                              exit={{ opacity: 0, height: 0 }}
-                              className="overflow-hidden bg-gray-50/50 rounded-lg mx-2"
-                            >
-                              <div className="flex flex-col p-2 gap-1">
-                                {link.submenu.map((sub) => (
-                                  <Link
-                                    key={sub.href}
-                                    href={sub.href}
-                                    onClick={() => setIsOpen(false)}
-                                    className={`px-4 py-3 text-base font-semibold rounded-lg transition-colors ${
-                                      pathname === sub.href
-                                        ? 'text-iska-blue bg-iska-blue/5'
-                                        : 'text-gray-500 hover:text-iska-blue'
-                                    }`}
-                                  >
-                                    {sub.name}
-                                  </Link>
-                                ))}
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+
+                        <div 
+                          className="grid transition-[grid-template-rows] duration-300 ease-in-out"
+                          style={{ gridTemplateRows: activeSubmenu === link.name ? '1fr' : '0fr' }}
+                        >
+                          <div className="overflow-hidden">
+                            <div className="flex flex-col p-2 gap-1">
+                              {link.submenu.map((sub) => (
+                                <Link
+                                  key={sub.href}
+                                  href={sub.href}
+                                  onClick={() => setIsOpen(false)}
+                                  className={`px-4 py-3 text-base font-semibold rounded-lg transition-colors ${
+                                    pathname === sub.href
+                                      ? 'text-iska-blue bg-iska-blue/5'
+                                      : 'text-gray-500 hover:text-iska-blue'
+                                  }`}
+                                >
+                                  {sub.name}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     ) : (
                       <Link
                         href={link.href}
                         onClick={() => setIsOpen(false)}
-                        className={`px-4 py-4 text-base sm:text-lg font-bold rounded-lg transition-colors ${
+                        className={`block px-4 py-4 text-base font-bold rounded-lg transition-colors ${
                           pathname === link.href 
                             ? 'text-iska-blue bg-iska-blue/5' 
                             : 'text-gray-600 hover:text-iska-blue'
@@ -199,22 +272,26 @@ export function Header() {
                     )}
                   </div>
                 ))}
-                <div className="pt-6 mt-4 border-t border-gray-100 flex gap-6 px-4">
-                  <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-iska-blue transition-colors">
-                    <Instagram size={24} />
-                  </a>
-                  <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-iska-blue transition-colors">
-                    <Facebook size={24} />
-                  </a>
-                  <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-iska-blue transition-colors">
-                    <Linkedin size={24} />
-                  </a>
-                </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
+            </div>
+
+            {/* Social links at bottom */}
+            <div className="relative z-10 border-t border-gray-100 px-4 sm:px-6 py-6">
+              <div className="max-w-7xl mx-auto flex gap-6">
+                <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-iska-blue transition-colors">
+                  <Instagram size={24} />
+                </a>
+                <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-iska-blue transition-colors">
+                  <Facebook size={24} />
+                </a>
+                <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-iska-blue transition-colors">
+                  <Linkedin size={24} />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
