@@ -309,7 +309,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
             <div className="lg:col-span-2">
               <SectionHeading title="Latest News" />
-              <div ref={newsScrollRef} onMouseEnter={() => stopCarousel(newsIntervalRef)} onMouseLeave={() => startCarousel(newsScrollRef.current, newsIntervalRef)} onTouchStart={() => stopCarousel(newsIntervalRef)} onTouchEnd={() => startCarousel(newsScrollRef.current, newsIntervalRef)} className="flex md:block gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+              <div ref={newsScrollRef} onMouseEnter={() => stopCarousel(newsIntervalRef)} onMouseLeave={() => startCarousel(newsScrollRef.current, newsIntervalRef)} onTouchStart={() => stopCarousel(newsIntervalRef)} onTouchEnd={() => startCarousel(newsScrollRef.current, newsIntervalRef)} className="flex md:block gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-ps-[7.5vw] scroll-pe-[7.5vw]">
                 {MOCK_NEWS.map((news) => (
                   <div key={news.id} className="group w-[85vw] md:w-auto shrink-0 snap-center flex flex-col md:flex-row gap-6 p-6 rounded-xl hover:bg-gray-50 transition-colors border border-gray-200 hover:border-gray-300 md:mb-6">
                 <div className="md:w-1/3 aspect-video rounded-lg overflow-hidden shrink-0 relative">
