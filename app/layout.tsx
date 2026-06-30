@@ -15,6 +15,9 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: 'ISKA Bangladesh | Official National Governing Body',
   description: 'Official National Representative of ISKA in Bangladesh. Developing, Regulating and Promoting Combat Sports Excellence.',
+  icons: {
+    icon: '/ISKA%20BANGLADESH%20LOGO.png',
+  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {

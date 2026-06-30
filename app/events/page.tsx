@@ -26,10 +26,10 @@ export default function Events() {
 
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="flex gap-4 mb-12 border-b border-gray-100 pb-4">
-            <button className="text-iska-blue font-bold border-b-2 border-iska-blue pb-4">Upcoming Events</button>
-            <button className="text-gray-400 font-bold hover:text-iska-black pb-4 transition-colors">Past Events</button>
-            <button className="text-gray-400 font-bold hover:text-iska-black pb-4 transition-colors">Event Calendar</button>
+          <div className="flex gap-3 sm:gap-4 mb-8 sm:mb-12 border-b border-gray-100">
+            <button className="text-iska-blue font-bold border-b-2 border-iska-blue pb-3 sm:pb-4 text-sm sm:text-base">Upcoming Events</button>
+            <button className="text-gray-400 font-bold hover:text-iska-black pb-3 sm:pb-4 transition-colors text-sm sm:text-base">Past Events</button>
+            <button className="text-gray-400 font-bold hover:text-iska-black pb-3 sm:pb-4 transition-colors text-sm sm:text-base">Event Calendar</button>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

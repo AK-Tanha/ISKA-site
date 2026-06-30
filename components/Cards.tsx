@@ -55,9 +55,6 @@ export function ProfileCard({ name, image, role, bio, slug }: { name: string, im
       </div>
       
       <div className="p-6 space-y-2 bg-white relative">
-        <div className="absolute -top-6 right-8 w-12 h-12 bg-iska-blue text-white rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 -translate-y-4 group-hover:translate-y-0 transition-all duration-500 shadow-xl rotate-3 group-hover:rotate-0">
-          <Trophy size={20} />
-        </div>
         <h4 className="font-display font-bold text-lg sm:text-xl text-iska-black group-hover:text-iska-blue transition-colors">{name}</h4>
         <div className="flex items-center gap-2">
           <div className="w-4 h-0.5 bg-iska-red" />
@@ -105,10 +102,12 @@ export function ServiceCard({ title, description, iconName }: { title: string, d
       whileHover={{ y: -5 }}
       className="p-5 sm:p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group"
     >
-      <div className="w-14 h-14 bg-iska-blue/5 rounded-xl flex items-center justify-center text-iska-blue mb-6 group-hover:bg-iska-blue group-hover:text-white transition-colors duration-300">
-        <Icon size={28} />
+      <div className="flex sm:flex-col items-center gap-3 sm:gap-0">
+        <div className="w-14 h-14 bg-iska-blue/5 rounded-xl flex items-center justify-center text-iska-blue shrink-0 sm:mb-6 group-hover:bg-iska-blue group-hover:text-white transition-colors duration-300">
+          <Icon size={28} />
+        </div>
+        <h3 className="text-lg sm:text-xl font-display font-bold sm:mb-3 group-hover:text-iska-blue transition-colors">{title}</h3>
       </div>
-      <h3 className="text-lg sm:text-xl font-display font-bold mb-3 group-hover:text-iska-blue transition-colors">{title}</h3>
       <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
     </motion.div>
   );
@@ -117,30 +116,30 @@ export function ServiceCard({ title, description, iconName }: { title: string, d
 export function RankingTable({ data }: { data: any[] }) {
   return (
     <div className="overflow-x-auto rounded-xl border border-gray-100 bg-white shadow-sm">
-      <table className="w-full text-left border-collapse">
+      <table className="w-full text-left border-collapse sm:w-full min-w-[600px] sm:min-w-0">
         <thead>
           <tr className="bg-gray-50 border-b border-gray-100">
-            <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500">Rank</th>
-            <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500">Athlete</th>
-            <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500">Weight</th>
-            <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500">Record</th>
-            <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500">Category</th>
-            <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 text-right">Status</th>
+            <th className="px-3 sm:px-6 py-3 sm:py-4 text-xs font-bold uppercase tracking-wider text-gray-500">Rank</th>
+            <th className="px-3 sm:px-6 py-3 sm:py-4 text-xs font-bold uppercase tracking-wider text-gray-500">Athlete</th>
+            <th className="px-3 sm:px-6 py-3 sm:py-4 text-xs font-bold uppercase tracking-wider text-gray-500">Weight</th>
+            <th className="px-3 sm:px-6 py-3 sm:py-4 text-xs font-bold uppercase tracking-wider text-gray-500">Record</th>
+            <th className="hidden sm:table-cell px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500">Category</th>
+            <th className="px-3 sm:px-6 py-3 sm:py-4 text-xs font-bold uppercase tracking-wider text-gray-500 text-right">Status</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-50">
           {data.map((item, idx) => (
             <tr key={idx} className="hover:bg-gray-50 transition-colors group">
-              <td className="px-6 py-4">
-                <span className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${
+              <td className="px-3 sm:px-6 py-3 sm:py-4">
+                <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm ${
                   item.rank === 1 ? 'bg-iska-red text-white' : 'bg-gray-100 text-gray-600'
                 }`}>
                   {item.rank}
                 </span>
               </td>
-              <td className="px-6 py-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gray-100 overflow-hidden shrink-0 border border-gray-100 relative">
+              <td className="px-3 sm:px-6 py-3 sm:py-4">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-100 overflow-hidden shrink-0 border border-gray-100 relative">
                     <Image 
                       src={`https://picsum.photos/seed/${item.name.replace(/\s+/g, '-').toLowerCase()}/200/200`}
                       alt={item.name}
@@ -150,17 +149,17 @@ export function RankingTable({ data }: { data: any[] }) {
                       sizes="40px"
                     />
                   </div>
-                  <span className="font-bold text-iska-black group-hover:text-iska-blue transition-colors">{item.name}</span>
+                  <span className="font-bold text-sm sm:text-base text-iska-black group-hover:text-iska-blue transition-colors whitespace-nowrap">{item.name}</span>
                 </div>
               </td>
-              <td className="px-6 py-4 text-gray-600 font-medium">{item.weight}</td>
-              <td className="px-6 py-4 text-gray-600 font-medium font-mono text-xs">{item.record}</td>
-              <td className="px-6 py-4">
+              <td className="px-3 sm:px-6 py-3 sm:py-4 text-gray-600 font-medium text-sm whitespace-nowrap">{item.weight}</td>
+              <td className="px-3 sm:px-6 py-3 sm:py-4 text-gray-600 font-medium font-mono text-xs whitespace-nowrap">{item.record}</td>
+              <td className="hidden sm:table-cell px-6 py-4">
                 <span className="px-3 py-1 bg-iska-blue/5 text-iska-blue rounded-full text-xs font-bold uppercase tracking-wider">
                   {item.category}
                 </span>
               </td>
-              <td className="px-6 py-4 text-right">
+              <td className="px-3 sm:px-6 py-3 sm:py-4 text-right whitespace-nowrap">
                 <span className={`font-bold text-xs uppercase tracking-widest ${
                   item.status === 'Champion' ? 'text-iska-red' : 'text-gray-400'
                 }`}>
