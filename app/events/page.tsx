@@ -7,8 +7,10 @@ import { SectionHeading } from '@/components/UI';
 import { MOCK_EVENTS } from '@/lib/data';
 import { Calendar, MapPin, Ticket, Clock, Info } from 'lucide-react';
 import { motion } from 'motion/react';
+import Link from 'next/link';
 
 export default function Events() {
+
   return (
     <main className="min-h-screen">
       <Header />
@@ -34,7 +36,7 @@ export default function Events() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {MOCK_EVENTS.map((event) => (
-              <div key={event.id} className="group flex flex-col md:flex-row bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500">
+              <Link key={event.id} href={`/events/${event.id}`} className="group flex flex-col md:flex-row bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500">
                 <div className="md:w-2/5 aspect-video md:aspect-[4/5] relative overflow-hidden">
                   <Image 
                     src={event.image} 
@@ -68,15 +70,15 @@ export default function Events() {
                   </div>
                   
                   <div className="mt-8 pt-8 border-t border-gray-50 flex items-center gap-4">
-                    <button className="flex-1 btn-primary py-3 flex items-center justify-center gap-2 text-sm">
+                    <span className="flex-1 btn-primary py-3 flex items-center justify-center gap-2 text-sm">
                       <Ticket size={18} /> Get Tickets
-                    </button>
-                    <button className="p-3 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors">
+                    </span>
+                    <span className="p-3 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors">
                       <Info size={18} className="text-gray-400" />
-                    </button>
+                    </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 

@@ -103,16 +103,16 @@ export const REGIONS = [
 ];
 
 export const PROGRAMS = [
-  { title: 'Athlete Development', icon: 'UserPlus', description: 'Comprehensive pathways for amateur and professional athletes.' },
-  { title: 'Coach Education', icon: 'GraduationCap', description: 'Official ISKA coaching certifications and workshops.' },
-  { title: 'Referee Certification', icon: 'Scale', description: 'International standards for ring officiating and safety.' },
-  { title: 'Judge Certification', icon: 'ClipboardCheck', description: 'Scoring excellence and technical evaluation training.' },
-  { title: 'Event Sanctioning', icon: 'ShieldCheck', description: 'Ensuring safety and professionalism in combat sports events.' },
-  { title: 'National Rankings', icon: 'TrendingUp', description: 'The official leaderboard for combat sports in Bangladesh.' },
-  { title: 'Championship Opportunities', icon: 'Trophy', description: 'Pathways to regional and world title fights.' },
-  { title: 'International Pathways', icon: 'Globe', description: 'Connecting Bangladeshi talent to the global ISKA network.' },
-  { title: 'Club Registration', icon: 'Home', description: 'Official affiliation for combat sports gyms and clubs.' },
-  { title: 'Official Membership', icon: 'UserCheck', description: 'Join the national governing body for combat sports.' },
+  { id: 1, title: 'Athlete Development', icon: 'UserPlus', description: 'Comprehensive pathways for amateur and professional athletes.' },
+  { id: 2, title: 'Coach Education', icon: 'GraduationCap', description: 'Official ISKA coaching certifications and workshops.' },
+  { id: 3, title: 'Referee Certification', icon: 'Scale', description: 'International standards for ring officiating and safety.' },
+  { id: 4, title: 'Judge Certification', icon: 'ClipboardCheck', description: 'Scoring excellence and technical evaluation training.' },
+  { id: 5, title: 'Event Sanctioning', icon: 'ShieldCheck', description: 'Ensuring safety and professionalism in combat sports events.' },
+  { id: 6, title: 'National Rankings', icon: 'TrendingUp', description: 'The official leaderboard for combat sports in Bangladesh.' },
+  { id: 7, title: 'Championship Opportunities', icon: 'Trophy', description: 'Pathways to regional and world title fights.' },
+  { id: 8, title: 'International Pathways', icon: 'Globe', description: 'Connecting Bangladeshi talent to the global ISKA network.' },
+  { id: 9, title: 'Club Registration', icon: 'Home', description: 'Official affiliation for combat sports gyms and clubs.' },
+  { id: 10, title: 'Official Membership', icon: 'UserCheck', description: 'Join the national governing body for combat sports.' },
 ];
 
 export const RANKINGS_CATEGORIES = ['Kickboxing', 'Muay Thai', 'MMA', 'Boxing'];
@@ -132,6 +132,7 @@ export const MOCK_EVENTS = [
     location: 'Mirpur Indoor Stadium, Dhaka',
     status: 'Upcoming',
     image: 'https://picsum.photos/seed/iska1/800/600',
+    description: 'The ISKA National Championship is an annual event that brings together the best amateur fighters from across Bangladesh to compete for the national title in various weight classes. This year’s championship will be held at the Mirpur Indoor Stadium in Dhaka and will feature over 100 athletes competing in kickboxing, Muay Thai, and MMA disciplines. The event will also serve as a qualifier for the upcoming ISKA World Championship in Italy. Attendees can expect a day filled with high-energy fights, thrilling knockouts, and a celebration of Bangladeshi martial arts talent.',
   },
   {
     id: 2,
@@ -140,6 +141,7 @@ export const MOCK_EVENTS = [
     location: 'MA Aziz Stadium, Chittagong',
     status: 'Upcoming',
     image: 'https://picsum.photos/seed/iska2/800/600',
+    description: 'The ISKA National Championship is an annual event that brings together the best amateur fighters from across Bangladesh to compete for the national title in various weight classes. This year’s championship will be held at the Mirpur Indoor Stadium in Dhaka and will feature over 100 athletes competing in kickboxing, Muay Thai, and MMA disciplines. The event will also serve as a qualifier for the upcoming ISKA World Championship in Italy. Attendees can expect a day filled with high-energy fights, thrilling knockouts, and a celebration of Bangladeshi martial arts talent.',
   },
 ];
 

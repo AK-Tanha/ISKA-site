@@ -111,7 +111,7 @@ export function Hero() {
   );
 }
 
-export function SectionHeading({ title, subtitle, centered = false, dark = false }: { title: string, subtitle?: string, centered?: boolean, dark?: boolean }) {
+export function SectionHeading({ title, subtitle, centered = false, dark = false, onClick }: { title: string, subtitle?: string, centered?: boolean, dark?: boolean, onClick?: () => void }) {
   return (
     <div className={`space-y-3 sm:space-y-4 mb-6 sm:mb-10 ${centered ? 'text-center mx-auto' : ''} ${centered ? 'max-w-2xl' : ''}`}>
       <motion.div
@@ -119,6 +119,7 @@ export function SectionHeading({ title, subtitle, centered = false, dark = false
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
+        onClick={onClick}
       >
         <div className={`w-12 h-1.5 bg-iska-red mb-4 ${centered ? 'mx-auto' : ''}`} />
         <h2 className={`text-2xl sm:text-3xl md:text-5xl font-display font-bold tracking-tighter ${dark ? 'text-white' : 'text-iska-black'}`}>
