@@ -143,6 +143,42 @@ export const MOCK_EVENTS = [
     image: 'https://picsum.photos/seed/iska2/800/600',
     description: 'The ISKA National Championship is an annual event that brings together the best amateur fighters from across Bangladesh to compete for the national title in various weight classes. This year’s championship will be held at the Mirpur Indoor Stadium in Dhaka and will feature over 100 athletes competing in kickboxing, Muay Thai, and MMA disciplines. The event will also serve as a qualifier for the upcoming ISKA World Championship in Italy. Attendees can expect a day filled with high-energy fights, thrilling knockouts, and a celebration of Bangladeshi martial arts talent.',
   },
+  {
+    id: 3,
+    title: 'ISKA Bangladesh Inaugural Ceremony',
+    date: '2026-01-15',
+    location: 'Dhaka Club, Dhaka',
+    status: 'Completed',
+    image: 'https://picsum.photos/seed/iska3/800/600',
+    description: 'The official inauguration ceremony marking the establishment of ISKA Bangladesh as the national governing body for kickboxing and combat sports. The ceremony was attended by dignitaries, athletes, and officials from across the country, celebrating Bangladesh\'s entry into the global ISKA network.',
+  },
+  {
+    id: 4,
+    title: 'Preseason Scouting: Dhaka Trials',
+    date: '2026-02-28',
+    location: 'Suhrawardi Indoor Stadium, Dhaka',
+    status: 'Completed',
+    image: 'https://picsum.photos/seed/iska4/800/600',
+    description: 'Open trials held at the Suhrawardi Indoor Stadium to identify and scout emerging talent across all weight classes and disciplines. Over 200 athletes participated in the trials, with standout performers shortlisted for the national development program.',
+  },
+  {
+    id: 5,
+    title: 'Regional Qualifier: Rajshahi',
+    date: '2026-04-10',
+    location: 'Rajshahi District Stadium, Rajshahi',
+    status: 'Completed',
+    image: 'https://picsum.photos/seed/iska5/800/600',
+    description: 'The first regional qualifier outside Dhaka brought together fighters from the Rajshahi division to compete for spots in the national championship. The event showcased the depth of talent in the region and was met with overwhelming community support.',
+  },
+  {
+    id: 6,
+    title: 'National Training Camp: Spring Session',
+    date: '2026-05-15',
+    location: 'BKSP, Savar',
+    status: 'Completed',
+    image: 'https://picsum.photos/seed/iska6/800/600',
+    description: 'An intensive week-long training camp at the Bangladesh Krira Shikkha Protishtan (BKSP) for athletes shortlisted from the regional qualifiers. The camp focused on technique refinement, conditioning, and mental preparation for the upcoming national championship.',
+  },
 ];
 
 export const MOCK_NEWS = [
